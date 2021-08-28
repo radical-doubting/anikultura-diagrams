@@ -1,0 +1,58 @@
+@startwbs
+
+* Anikultura System
+
+** Administrator Dashboard
+
+*** Farmer Management
+****_ Create Farmer Account
+****_ Read Farmer Information
+****_ Edit Farmer Information
+****_ Delete Farmer Account
+
+***< Batch Management
+****_< Create Batch
+****_< Read Batch Information
+****_< Edit Batch Information
+****_< Delete Batch
+
+*** Farmland Management
+****_ Create Farmland
+****_ Read Farmland Information
+****_ Edit Farmland Information
+****_ Delete Farmland
+
+***< Crop Type Management
+****_< Create Crop Type
+****_< Read Crop Type Information
+****_< Edit Crop Type Information
+****_< Delete Crop Type
+
+*** Site Management
+****_ Create Site
+****_ Read Site Information
+****_ Edit Site Information
+****_ Delete Site
+
+***< Access Control Management
+****_< Create Roles
+****_< Read Role Information
+****_< Edit Role Information
+****_< Delete Role
+
+** Farmer Dashboard
+
+***< Report Insights
+****_< See Report History
+****_< See Farming Performance
+
+*** Market Insights
+****_ See Selling Price of Crops
+****_ See Estimated Profit
+
+*** Profile Management
+****_ Read Account Details
+****_ Edit Account Details
+****_ Edit Preferred Language
+
+@endwbs
