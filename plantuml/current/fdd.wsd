@@ -1,0 +1,18 @@
+@startwbs
+
+* SMFI Current System
+
+** Administrator Side
+
+*** Farmer Management
+****_ Register Farmer by Filling Out Paper Form
+
+***< Report Management
+****_ Read Report
+
+** Farmer Side
+
+*** Report Management
+****_ Send Report by Filling Out Paper Form
+
+@endwbs

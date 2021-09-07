@@ -40,9 +40,13 @@
 ****_< Edit Role Information
 ****_< Delete Role
 
+*** Report Management
+****_ Read Reports
+
 ** Farmer Dashboard
 
-***< Report Insights
+***< Report Management
+****_< Send Report
 ****_< See Report History
 ****_< See Farming Performance
 
