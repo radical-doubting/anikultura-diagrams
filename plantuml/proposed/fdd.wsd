@@ -2,61 +2,64 @@
 
 * Anikultura System
 
-** Administrator Dashboard
+** Common
 
-*** Farmer Management
-****_ Create Farmer Account
-****_ Read Farmer Information
-****_ Edit Farmer Information
-****_ Delete Farmer Account
+*** 1. Authentication
+****_ 1.1. Login to Account
+****_ 1.2. Logout from Account
 
-***< Batch Management
-****_< Create Batch
-****_< Read Batch Information
-****_< Edit Batch Information
-****_< Delete Batch
+*** 2. Profile Management
+****_ 2.1. Read Account Details
+****_ 2.2. Edit Account Details
+****_ 2.3. Edit Preferred Language
 
-*** Farmland Management
-****_ Create Farmland
-****_ Read Farmland Information
-****_ Edit Farmland Information
-****_ Delete Farmland
+** Administrator
 
-***< Crop Type Management
-****_< Create Crop Type
-****_< Read Crop Type Information
-****_< Edit Crop Type Information
-****_< Delete Crop Type
+***< 3. Farmer Management
+****_< 3.1. Create Farmer Account
+****_< 3.2. Read Farmer Information
+****_< 3.3. Edit Farmer Information
+****_< 3.4. Delete Farmer Account
 
-*** Site Management
-****_ Create Site
-****_ Read Site Information
-****_ Edit Site Information
-****_ Delete Site
+*** 4. Batch Management
+****_ 4.1. Create Batch
+****_ 4.2. Read Batch Information
+****_ 4.3. Edit Batch Information
+****_ 4.4. Delete Batch
 
-***< Access Control Management
-****_< Create Roles
-****_< Read Role Information
-****_< Edit Role Information
-****_< Delete Role
+***< 5. Farmland Management
+****_< 5.1. Create Farmland
+****_< 5.2. Read Farmland Information
+****_< 5.3. Edit Farmland Information
+****_< 5.4. Delete Farmland
 
-*** Report Management
-****_ Read Reports
+*** 6. Crop Type Management
+****_ 6.1. Create Crop Type
+****_ 6.2. Read Crop Type Information
+****_ 6.3. Edit Crop Type Information
+****_ 6.4. Delete Crop Type
 
-** Farmer Dashboard
+***< 7. Site Management
+****_< 7.1. Create Site
+****_< 7.2. Read Site Information
+****_< 7.3. Edit Site Information
+****_< 7.4. Delete Site
 
-***< Report Management
-****_< Send Report
-****_< See Report History
-****_< See Farming Performance
+*** 8. Access Control Management
+****_ 8.1. Create Roles
+****_ 8.2. Read Role Information
+****_ 8.3. Edit Role Information
+****_ 8.4. Delete Role
 
-*** Market Insights
-****_ See Selling Price of Crops
-****_ See Estimated Profit
+** Farmer
 
-*** Profile Management
-****_ Read Account Details
-****_ Edit Account Details
-****_ Edit Preferred Language
+*** 9. Farmer Report Management
+****_ 9.1. Send Report
+****_ 9.2. See Report History
+****_ 9.3. See Farming Performance
+
+*** 10. Market Insights
+****_ 10.1. See Selling Price of Crops
+****_ 10.2. See Estimated Profit
 
 @endwbs
