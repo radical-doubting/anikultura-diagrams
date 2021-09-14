@@ -15,41 +15,41 @@
 
 ** Administrator
 
-***< 3. Farmer Management
+***< 3. Manage Farmer
 ****_< 3.1. Create Farmer Account
 ****_< 3.2. Read Farmer Information
 ****_< 3.3. Edit Farmer Information
 ****_< 3.4. Delete Farmer Account
 
-*** 4. Batch Management
+*** 4. Manage Batch
 ****_ 4.1. Create Batch
 ****_ 4.2. Read Batch Information
 ****_ 4.3. Edit Batch Information
 ****_ 4.4. Delete Batch
 
-***< 5. Farmland Management
+***< 5. Manage Farmland
 ****_< 5.1. Create Farmland
 ****_< 5.2. Read Farmland Information
 ****_< 5.3. Edit Farmland Information
 ****_< 5.4. Delete Farmland
 
-*** 6. Crop Type Management
+*** 6. Manage Crop Type
 ****_ 6.1. Create Crop Type
 ****_ 6.2. Read Crop Type Information
 ****_ 6.3. Edit Crop Type Information
 ****_ 6.4. Delete Crop Type
 
-***< 7. Site Management
+***< 7. Manage Site
 ****_< 7.1. Create Site
 ****_< 7.2. Read Site Information
 ****_< 7.3. Edit Site Information
 ****_< 7.4. Delete Site
 
-*** 8. Access Control Management
-****_ 8.1. Create Roles
-****_ 8.2. Read Role Information
-****_ 8.3. Edit Role Information
-****_ 8.4. Delete Role
+*** 8. Manage Access Control
+****_ 8.1. Create Permission
+****_ 8.2. Read Permission Information
+****_ 8.3. Edit Permission Information
+****_ 8.4. Delete Permission
 
 ** Farmer
 

@@ -1,0 +1,38 @@
+@startuml
+
+left to right direction
+actor "SMFI Admin" as a
+
+rectangle "Admin Dashboard" {
+    usecase "Manage Farmer" as AD1
+    usecase "Create Farmer Account" as AD1.4
+    usecase "Read Farmer Information" as AD1.3
+    usecase "Edit Farmer Information" as AD1.2
+    usecase "Delete Farmer Account" as AD1.1
+}
+
+actor "Farmer" as f
+
+rectangle "Farmer Dashboard" {
+    usecase "Manage Farmer Report" as FD1
+    usecase "Send Report" as FD1.1
+    usecase "See Report History" as FD1.2
+    usecase "See Farming Performance" as FD1.3
+}
+
+
+AD1 ..> AD1.1 : <<include>>
+AD1 ..> AD1.2 : <<include>>
+AD1 ..> AD1.3 : <<include>>
+AD1 ..> AD1.4 : <<include>>
+
+a -- AD1
+
+f -- FD1
+
+FD1 ..> FD1.1 : <<include>>
+FD1 ..> FD1.2 : <<include>>
+FD1 ..> FD1.3 : <<include>>
+
+
+@enduml
