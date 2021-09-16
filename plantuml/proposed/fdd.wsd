@@ -2,64 +2,57 @@
 
 * Anikultura System
 
-** Common
+**_ A
 
-*** 1. Authentication
+*** 1. Authenticate
 ****_ 1.1. Login to Account
 ****_ 1.2. Logout from Account
 
-*** 2. Profile Management
-****_ 2.1. Read Account Details
-****_ 2.2. Edit Account Details
-****_ 2.3. Edit Preferred Language
+*** 2. Manage User
+****_ 2.1. Create User Account
+*****_ 2.1.1. Create Farmer Profile
+*****_ 2.1.2. Create Admin Profile
+****_ 2.2. Read User Information
+****_ 2.3. Edit User Information
+****_ 2.4. Delete User Account
 
-** Administrator
+*** 3. Manage Batch
+****_ 3.1. Create Batch
+*****_ 3.1.1. Assign Batch in a Site
+****_ 3.2. Read Batch Information
+****_ 3.3. Edit Batch Information
+****_ 3.4. Delete Batch
 
-***< 3. Manage Farmer
-****_< 3.1. Create Farmer Account
-****_< 3.2. Read Farmer Information
-****_< 3.3. Edit Farmer Information
-****_< 3.4. Delete Farmer Account
+**_ B
+    
+*** 4. Manage Farmland
+****_ 4.1. Create Farmland
+*****_ 4.1.1. Assign Farmland in a Batch
+*****_ 4.1.2. Assign Farmer in a Farmland
+****_ 4.2. Read Farmland Information
+****_ 4.3. Edit Farmland Information
+****_ 4.4. Delete Farmland
 
-*** 4. Manage Batch
-****_ 4.1. Create Batch
-****_ 4.2. Read Batch Information
-****_ 4.3. Edit Batch Information
-****_ 4.4. Delete Batch
+*** 5. Manage Crop Type
+****_ 5.1. Create Crop Type
+****_ 5.2. Read Crop Type Information
+****_ 5.3. Edit Crop Type Information
+****_ 5.4. Delete Crop Type
 
-***< 5. Manage Farmland
-****_< 5.1. Create Farmland
-****_< 5.2. Read Farmland Information
-****_< 5.3. Edit Farmland Information
-****_< 5.4. Delete Farmland
+**_ C
 
-*** 6. Manage Crop Type
-****_ 6.1. Create Crop Type
-****_ 6.2. Read Crop Type Information
-****_ 6.3. Edit Crop Type Information
-****_ 6.4. Delete Crop Type
+*** 6. Manage Site
+****_ 6.1. Create Site
+****_ 6.2. Read Site Information
+****_ 6.3. Edit Site Information
+****_ 6.4. Delete Site
 
-***< 7. Manage Site
-****_< 7.1. Create Site
-****_< 7.2. Read Site Information
-****_< 7.3. Edit Site Information
-****_< 7.4. Delete Site
-
-*** 8. Manage Access Control
-****_ 8.1. Create Permission
-****_ 8.2. Read Permission Information
-****_ 8.3. Edit Permission Information
-****_ 8.4. Delete Permission
-
-** Farmer
-
-*** 9. Farmer Report Management
-****_ 9.1. Send Report
-****_ 9.2. See Report History
-****_ 9.3. See Farming Performance
-
-*** 10. Market Insights
-****_ 10.1. See Selling Price of Crops
-****_ 10.2. See Estimated Profit
+*** 7. Manage Farming Report
+****_ 7.1. Send Farming Report
+****_ 7.2. Read Farming Insights
+*****_ 7.2.1. Read Farming Report History
+*****_ 7.2.2. Read Selling Price of Crops
+*****_ 7.2.3. Read Estimated Profit
+*****_ 7.2.4. Read Estimated Yield
 
 @endwbs

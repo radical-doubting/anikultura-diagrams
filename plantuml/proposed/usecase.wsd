@@ -4,16 +4,46 @@ left to right direction
 actor "SMFI Admin" as a
 
 rectangle "Admin Dashboard" {
-    usecase "Manage Farmer" as AD1
-    usecase "Create Farmer Account" as AD1.4
-    usecase "Read Farmer Information" as AD1.3
-    usecase "Edit Farmer Information" as AD1.2
-    usecase "Delete Farmer Account" as AD1.1
+    usecase "Manage User" as AD1
+    usecase "Create User Account" as AD1.1
+    usecase "Read User Information" as AD1.2
+    usecase "Edit User Information" as AD1.3
+    usecase "Delete User Account" as AD1.4
+
+    usecase "Manage Batch" as AD2
+    usecase "Create Batch Group" as AD2.1
+    usecase "Read Batch Details" as AD2.2
+    usecase "Edit Batch Details" as AD2.3
+    usecase "Delete Batch Details" as AD2.4
+    usecase "Assign Farmland in a Batch" as AD2.5
+
+    usecase "Manage Farmland" as AD3
+    usecase "Create Farmer Account" as AD3.1
+    usecase "Read Farmland Information" as AD3.2
+    usecase "Edit Farmland Information" as AD3.3
+    usecase "Delete Farmland" as AD3.4
+
+    usecase "Manage Crop Type" as AD4
+    usecase "Create Crop Types" as AD4.1
+    usecase "Read Crop Information" as AD4.2
+    usecase "Edit Crop Information" as AD4.3
+    usecase "Delete Crop Information" as AD4.4
+
+    usecase "Manage Site" as AD5
+    usecase "Create Municipalities, Provinces, and Region" as AD5.1
+    usecase "Read Site Information" as AD5.2
+    usecase "Edit Site Information" as AD5.3
+    usecase "Delete Site Information" as AD5.4
 }
 
 actor "Farmer" as f
 
 rectangle "Farmer Dashboard" {
+    usecase "Manage Farmer Report" as FD1
+    usecase "Send Report" as FD1.1
+    usecase "See Report History" as FD1.2
+    usecase "See Farming Performance" as FD1.3
+
     usecase "Manage Farmer Report" as FD1
     usecase "Send Report" as FD1.1
     usecase "See Report History" as FD1.2
@@ -26,7 +56,32 @@ AD1 ..> AD1.2 : <<include>>
 AD1 ..> AD1.3 : <<include>>
 AD1 ..> AD1.4 : <<include>>
 
+AD2 ..> AD2.1 : <<include>>
+AD2 ..> AD2.2 : <<include>>
+AD2 ..> AD2.3 : <<include>>
+AD2 ..> AD2.4 : <<include>>
+AD2 ..> AD2.5 : <<include>>
+
+AD3 ..> AD3.1 : <<include>>
+AD3 ..> AD3.2 : <<include>>
+AD3 ..> AD3.3 : <<include>>
+AD3 ..> AD3.4 : <<include>>
+
+AD4 ..> AD4.1 : <<include>>
+AD4 ..> AD4.2 : <<include>>
+AD4 ..> AD4.3 : <<include>>
+AD4 ..> AD4.4 : <<include>>
+
+AD5 ..> AD5.1 : <<include>>
+AD5 ..> AD5.2 : <<include>>
+AD5 ..> AD5.3 : <<include>>
+AD5 ..> AD5.4 : <<include>>
+
 a -- AD1
+a -- AD2
+a -- AD3
+a -- AD4
+a -- AD5
 
 f -- FD1
 
