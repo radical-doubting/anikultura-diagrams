@@ -47,12 +47,12 @@
 ****_ 6.3. Edit Site Information
 ****_ 6.4. Delete Site
 
-*** 7. Manage Farming Report
-****_ 7.1. Send Farming Report
-****_ 7.2. Read Farming Insights
-*****_ 7.2.1. Read Farming Report History
-*****_ 7.2.2. Read Selling Price of Crops
-*****_ 7.2.3. Read Estimated Profit
-*****_ 7.2.4. Read Estimated Yield
+*** 7. Send Farming Report
+
+*** 8. Read Farming Insight
+****_ 8.1. Read Farming Report History
+****_ 8.2. Read Selling Price of Crop
+****_ 8.3. Read Estimated Profit
+****_ 8.4. Read Estimated Yield
 
 @endwbs

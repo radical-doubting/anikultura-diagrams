@@ -1,93 +1,104 @@
 @startuml
 
 left to right direction
-actor "SMFI Admin" as a
 
-rectangle "Admin Dashboard" {
-    usecase "Manage User" as AD1
-    usecase "Create User Account" as AD1.1
-    usecase "Read User Information" as AD1.2
-    usecase "Edit User Information" as AD1.3
-    usecase "Delete User Account" as AD1.4
-
-    usecase "Manage Batch" as AD2
-    usecase "Create Batch Group" as AD2.1
-    usecase "Read Batch Details" as AD2.2
-    usecase "Edit Batch Details" as AD2.3
-    usecase "Delete Batch Details" as AD2.4
-    usecase "Assign Farmland in a Batch" as AD2.5
-
-    usecase "Manage Farmland" as AD3
-    usecase "Create Farmer Account" as AD3.1
-    usecase "Read Farmland Information" as AD3.2
-    usecase "Edit Farmland Information" as AD3.3
-    usecase "Delete Farmland" as AD3.4
-
-    usecase "Manage Crop Type" as AD4
-    usecase "Create Crop Types" as AD4.1
-    usecase "Read Crop Information" as AD4.2
-    usecase "Edit Crop Information" as AD4.3
-    usecase "Delete Crop Information" as AD4.4
-
-    usecase "Manage Site" as AD5
-    usecase "Create Municipalities, Provinces, and Region" as AD5.1
-    usecase "Read Site Information" as AD5.2
-    usecase "Edit Site Information" as AD5.3
-    usecase "Delete Site Information" as AD5.4
-}
-
-actor "Farmer" as f
-
-rectangle "Farmer Dashboard" {
-    usecase "Manage Farmer Report" as FD1
-    usecase "Send Report" as FD1.1
-    usecase "See Report History" as FD1.2
-    usecase "See Farming Performance" as FD1.3
-
-    usecase "Manage Farmer Report" as FD1
-    usecase "Send Report" as FD1.1
-    usecase "See Report History" as FD1.2
-    usecase "See Farming Performance" as FD1.3
-}
+actor "SMFI Admin" as admin
+actor "Farmer" as farmer
 
 
-AD1 ..> AD1.1 : <<include>>
-AD1 ..> AD1.2 : <<include>>
-AD1 ..> AD1.3 : <<include>>
-AD1 ..> AD1.4 : <<include>>
+usecase "Login to Account" as C1.1
+usecase "Logout from Account" as C1.2
 
-AD2 ..> AD2.1 : <<include>>
-AD2 ..> AD2.2 : <<include>>
-AD2 ..> AD2.3 : <<include>>
-AD2 ..> AD2.4 : <<include>>
-AD2 ..> AD2.5 : <<include>>
+usecase "Manage User" as AD1
+usecase "Create User" as AD1.1
+usecase "Read User Information" as AD1.2
+usecase "Edit User Information" as AD1.3
+usecase "Delete User" as AD1.4
 
-AD3 ..> AD3.1 : <<include>>
-AD3 ..> AD3.2 : <<include>>
-AD3 ..> AD3.3 : <<include>>
-AD3 ..> AD3.4 : <<include>>
+usecase "Create Batch" as AD2.1
+usecase "Read Batch Information" as AD2.2
+usecase "Edit Batch Information" as AD2.3
+usecase "Delete Batch" as AD2.4
 
-AD4 ..> AD4.1 : <<include>>
-AD4 ..> AD4.2 : <<include>>
-AD4 ..> AD4.3 : <<include>>
-AD4 ..> AD4.4 : <<include>>
+usecase "Create Farmland" as AD3.1
+usecase "Read Farmland Information" as AD3.2
+usecase "Edit Farmland Information" as AD3.3
+usecase "Delete Farmland" as AD3.4
 
-AD5 ..> AD5.1 : <<include>>
-AD5 ..> AD5.2 : <<include>>
-AD5 ..> AD5.3 : <<include>>
-AD5 ..> AD5.4 : <<include>>
+usecase "Manage Crop Type" as AD4
+usecase "Create Crop Type" as AD4.1
+usecase "Read Crop Type Information" as AD4.2
+usecase "Edit Crop Type Information" as AD4.3
+usecase "Delete Crop Type" as AD4.4
 
-a -- AD1
-a -- AD2
-a -- AD3
-a -- AD4
-a -- AD5
+usecase "Create Site" as AD5.1
+usecase "Read Site Information" as AD5.2
+usecase "Edit Site Information" as AD5.3
+usecase "Delete Site Information" as AD5.4
 
-f -- FD1
+usecase "Send Farming Report" as FD1
+usecase "Read Farming Insight" as FD2
 
-FD1 ..> FD1.1 : <<include>>
-FD1 ..> FD1.2 : <<include>>
-FD1 ..> FD1.3 : <<include>>
+' Admin Usecases
+admin -- AD1
+admin -- AD1.2
+
+AD1 <.. AD1.1 : <<extemd>>
+AD1 <.. AD1.3 : <<extend>>
+AD1 <.. AD1.4 : <<extend>>
+
+' AD1.1 <.. AD1.1.1 : <<extend>>
+' AD1.1 <.. AD1.1.2 : <<extend>>
+
+admin -- AD2.1
+admin -- AD2.2
+admin -- AD2.3
+admin -- AD2.4
+
+' AD2.1 <.. AD2.1.1 : <<extend>>
+
+admin -- AD3.1
+admin -- AD3.2
+admin -- AD3.3
+admin -- AD3.4
+
+' AD3.1 <.. AD3.1.1 : <<extend>>
+' AD3.1 <.. AD3.1.2 : <<extend>>
+
+admin -- AD4.1
+admin -- AD4.2
+
+admin -- AD4.3
+admin -- AD4.4
+
+admin -- AD5.1
+admin -- AD5.2
+
+admin -- AD5.3
+admin -- AD5.4
+
+admin -- C1.1
+admin -- C1.2
+admin -- FD2
+
+' Farmer Usecases
+
+C1.1 -- farmer
+C1.2 -- farmer
+AD1.2 -- farmer
+AD2.2 -- farmer
+AD3.2 -- farmer
+AD4.2 -- farmer
+AD5.2 -- farmer
+FD2 -- farmer
+
+FD1 -- farmer
+
+' FD1 ..> FD2 : <<extend>>
+' FD2 ..> FD2.1 : <<include>>
+' FD2 ..> FD2.2 : <<include>>
+' FD2 ..> FD2.3 : <<include>>
+' FD2 ..> FD2.4 : <<include>>
 
 
 @enduml
