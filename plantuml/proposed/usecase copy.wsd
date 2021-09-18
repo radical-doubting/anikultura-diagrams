@@ -2,29 +2,43 @@
 
 left to right direction
 
-actor "SMFI Admin" as admin
-actor "Farmer" as farmer
+rectangle "Anikultura System" {
+    actor "Big Brother" as bigbro
+    actor "Admin" as admin
+    actor "Farmer" as farmer
 
+    rectangle "Anikultura Server" {
+        usecase "Manage User" as AD1
+        usecase "Manage Batch" as AD2
+        usecase "Manage Farmland" as AD3
+        usecase "Manage Crop Type" as AD4
+        usecase "Manage Site" as AD5
+        usecase "Read Farming Insight" as FD3
+        ' usecase "Authenticate" as C1.1
+    }
 
-usecase "Manage User" as AD1
-usecase "Manage Batch" as AD2
-usecase "Manage Farmland" as AD3
-usecase "Manage Crop Type" as AD4
-usecase "Manage Site" as AD5
-
-usecase "Send Farming Report" as FD1
-usecase "Read Farming Insight" as FD2
-usecase "Login to Account" as C1.1
-
+    rectangle "Anikultura Client" {
+        usecase "Send Farming Report" as FD1
+        usecase "Read My Farming Insight" as FD2
+    }
+}
 
 ' Admin Usecases
 
 admin -- AD1
 admin -- AD2
-admin -- AD3
-
-admin -- AD4
+bigbro -- AD3
+bigbro -- AD4
 admin -- AD5
+
+admin -|> bigbro
+
+' AD1 ..> C1.1 : <<include>>
+' AD2 ..> C1.1 : <<include>>
+' AD3 ..> C1.1 : <<include>>
+' AD4 ..> C1.1 : <<include>>
+' AD5 ..> C1.1 : <<include>>
+
 
 ' Usecase Dependencies
 
@@ -32,27 +46,20 @@ AD5 <. AD2 : <<include>>
 AD2 <. AD1 : <<include>>
 AD1 <. AD3 : <<include>>
 
+' Farming Report to Manage Dependencies
 AD1 <.. FD1 : <<include>>
 AD3 <.. FD1 : <<include>>
 AD4 <.. FD1 : <<include>>
 
-' Farmer Usecases
+' Farming Insight
+bigbro -- FD3
+FD3 <|-- FD2
+FD3 ..> FD1 : <<include>>
 
-
-
-admin -- FD2
 FD1 -- farmer
+FD2 -- farmer
 
 FD1 .> FD2 : <<extend>>
 
-' AD1.2 -- farmer
-' AD2.2 -- farmer
-' AD3.2 -- farmer
-' AD4.2 -- farmer
-' AD5.2 -- farmer
-FD2 -- farmer
-
-admin -- C1.1
-C1.1 -- farmer
 
 @enduml
