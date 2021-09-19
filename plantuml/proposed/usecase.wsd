@@ -19,7 +19,7 @@ rectangle "Anikultura System" {
 
     rectangle "Anikultura Client" {
         usecase "Send Farming Report" as FD1
-        usecase "Read My Farming Insight" as FD2
+        usecase "Read Personal Farming Insight" as FD2
     }
 }
 
