@@ -1,0 +1,37 @@
+@startuml
+
+|Farmer|
+
+start
+note left
+    System already has
+    configured sites, batches,
+    users, farmlands, and crop
+    types.
+endnote
+
+|Farmer|
+if (Is eligible to send?) then (Yes)
+    :Send farming report;
+else (No)
+endif
+
+|Big Brother|
+:Verify farming report;
+
+if (Is the report valid?) then (Yes)
+    :Approve report;
+else (No)
+    :Reject report;
+endif
+
+|Farmer|
+if (Has approved reports?) then (Yes)
+    |Farmer|
+    :Read personal farming insights;
+else (No)
+endif
+
+stop
+
+@enduml

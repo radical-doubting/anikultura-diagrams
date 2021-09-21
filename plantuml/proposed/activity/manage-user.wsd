@@ -1,0 +1,53 @@
+@startuml
+
+|Admin|
+start
+note left: Manage User
+
+:Visit User Management page;
+
+|System|
+:Return a list of all created users;
+|Admin|
+
+if (Is there an existing user?) then (Yes)
+    :Read user information;
+    if (Is it still in use?) then (Yes)
+        :Edit user information;
+    else (No)
+        :Delete user;
+    endif
+else (No)
+    :Create user;
+
+    if (Is user a farmer?) then (Yes)
+        :Create farmer profile;
+    else (No)
+        if (Is user a big brother?) then (Yes)
+            :Create big brother profile;
+        else (No)
+            if (Is user an admin?) then (Yes)
+                :Create admin profile;
+            else (No)
+            endif
+        endif
+    endif
+endif
+
+|System|
+:Validate changes;
+if (Are the changes valid?) then (Yes)
+    :Accept changes;
+    :Show success message;
+else (No)
+    :Reject changes;
+    :Show error message;
+    stop
+endif
+
+|Admin|
+:Read user information;
+
+stop
+
+@enduml
