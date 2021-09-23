@@ -13,8 +13,9 @@ rectangle "Anikultura System" {
         usecase "Manage Farmland" as AD3
         usecase "Manage Crop Type" as AD4
         usecase "Manage Site" as AD5
+
+        usecase "Verify Farming Report" as AD6
         usecase "Read Farming Insight" as FD3
-        ' usecase "Authenticate" as C1.1
     }
 
     rectangle "Anikultura Client" {
@@ -29,16 +30,10 @@ admin -- AD1
 admin -- AD2
 bigbro -- AD3
 bigbro -- AD4
+bigbro -- AD6
 admin -- AD5
 
 admin -|> bigbro
-
-' AD1 ..> C1.1 : <<include>>
-' AD2 ..> C1.1 : <<include>>
-' AD3 ..> C1.1 : <<include>>
-' AD4 ..> C1.1 : <<include>>
-' AD5 ..> C1.1 : <<include>>
-
 
 ' Usecase Dependencies
 
@@ -47,19 +42,21 @@ AD2 <. AD1 : <<include>>
 AD1 <. AD3 : <<include>>
 
 ' Farming Report to Manage Dependencies
-AD1 <.. FD1 : <<include>>
-AD3 <.. FD1 : <<include>>
-AD4 <.. FD1 : <<include>>
+AD1 <. FD1 : <<include>>
+AD3 <. FD1 : <<include>>
+AD4 <. FD1 : <<include>>
 
 ' Farming Insight
 bigbro -- FD3
-FD3 <|-- FD2
-FD3 ..> FD1 : <<include>>
+FD3 .> AD6 : <<include>>
+AD6 ..> FD1 : <<include>>
+
+FD3 <|--- FD2
 
 FD1 -- farmer
 FD2 -- farmer
 
-FD1 .> FD2 : <<extend>>
+' FD1 .> FD2 : <<extend>>
 
 
 @enduml

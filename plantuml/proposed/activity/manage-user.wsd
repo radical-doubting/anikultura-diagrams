@@ -20,13 +20,13 @@ if (Is there an existing user?) then (Yes)
 else (No)
     :Create user;
 
-    if (Is user a farmer?) then (Yes)
+    if (Is created user a farmer?) then (Yes)
         :Create farmer profile;
     else (No)
-        if (Is user a big brother?) then (Yes)
+        if (Is created user a big brother?) then (Yes)
             :Create big brother profile;
         else (No)
-            if (Is user an admin?) then (Yes)
+            if (Is created user an admin?) then (Yes)
                 :Create admin profile;
             else (No)
             endif

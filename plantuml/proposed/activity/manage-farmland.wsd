@@ -1,0 +1,53 @@
+@startuml
+
+|Big Brother|
+start
+note left: Manage farmland
+
+:Visit Farmland Management page;
+
+|System|
+:Return a list of all farmland;
+|Big Brother|
+
+if (Is there an existing farmland?) then (Yes)
+    :Read farmland information;
+    if (Is it still in use?) then (Yes)
+        :Edit farmland information;
+    else (No)
+        :Delete farmland;
+    endif
+else (No)
+    :Create farmland;
+
+    if (Is user a big brother?) then (Yes)
+        :Create farmland;
+        :Assign farmland in a batch;
+        :Assign farmer in farmland;
+    else (No)
+        if (Is user an admin?) then (Yes)
+            :Create farmland;
+            :Assign farmland in a batch;
+            :Assign farmer in farmland;
+        else (No)
+        endif
+    endif
+endif
+
+|System|
+:Validate changes;
+if (Are the changes valid?) then (yes)
+    :Accept changes;
+    :Show sucess message;
+else (no)
+    :Reject changes;
+    :Show error message;
+    stop
+endif
+
+|Big Brother|
+:Read farmland information;
+
+stop
+
+@enduml

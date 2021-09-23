@@ -1,0 +1,40 @@
+@startuml
+
+|Big Brother|
+start
+note left: Manage crop type
+
+:Visit Crop Type Management page;
+
+|System|
+:Return a list of all created crop types;
+|Big Brother|
+
+if (Is there an existing crop type?) then (Yes)
+    :Read crop type information;
+    if (Is it still in use?) then (Yes)
+        :Edit crop type information;
+    else (No)
+        :Delete crop type;
+    endif
+else (No)
+    :Create crop type;
+endif
+
+|System|
+:Validate changes;
+if (Are the changes valid?) then (yes)
+    :Accept changes;
+    :Show success message;
+else (no)
+    :Reject changes;
+    :Show error message;
+    stop
+endif
+
+|Big Brother|
+:Read site information;
+
+stop
+
+@enduml

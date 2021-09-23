@@ -12,17 +12,25 @@ endnote
 
 |Farmer|
 if (Is eligible to send?) then (Yes)
+    :Provide farming inputs;
     :Send farming report;
-else (No)
-endif
 
-|Big Brother|
-:Verify farming report;
+    |Big Brother|
+    :Verify farming report;
 
-if (Is the report valid?) then (Yes)
-    :Approve report;
+    if (Is the report valid?) then (Yes)
+        :Approve report;
+        |System|
+        :Generate farming insights;
+    else (No)
+        |Big Brother|
+        :Reject report;
+    endif
+    |System|
+    :Notify farmer who reported;
 else (No)
-    :Reject report;
+    |Farmer|
+    stop
 endif
 
 |Farmer|
