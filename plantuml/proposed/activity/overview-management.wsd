@@ -1,0 +1,35 @@
+@startuml
+
+|Admin|
+
+start
+
+:Login to management dashboard;
+
+:Manage site;
+
+:Manage batch;
+
+:Manage user;
+
+:Inform big brother of account credentials;
+
+|Big Brother|
+
+:Login to management dashboard;
+
+:Manage farmland;
+
+:Manage crop type;
+
+:Inform farmer of account credentials;
+
+|Farmer|
+
+:Login to farmer dashboard;
+
+:Start farmer session;
+
+stop
+
+@enduml

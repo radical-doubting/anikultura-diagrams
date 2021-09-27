@@ -4,16 +4,25 @@
 
 start
 note left
-    System already has
+    A session is started and
+    the system already has
     configured sites, batches,
     users, farmlands, and crop
     types.
 endnote
 
 |Farmer|
-if (Is eligible to send?) then (Yes)
+
+if (Is eligible to send report?) then (Yes)
+    :Visit Submit Farming Report page;
     :Provide farming inputs;
     :Send farming report;
+
+    |Big Brother|
+    :Visit Farming Report Management page;
+
+    |System|
+    :Return a list of all submitted reports;
 
     |Big Brother|
     :Verify farming report;
@@ -21,25 +30,17 @@ if (Is eligible to send?) then (Yes)
     if (Is the report valid?) then (Yes)
         :Approve report;
         |System|
-        :Generate farming insights;
+        :Update farming stage of farmer;
     else (No)
         |Big Brother|
         :Reject report;
     endif
     |System|
     :Notify farmer who reported;
+    stop
 else (No)
     |Farmer|
     stop
 endif
-
-|Farmer|
-if (Has approved reports?) then (Yes)
-    |Farmer|
-    :Read personal farming insights;
-else (No)
-endif
-
-stop
 
 @enduml

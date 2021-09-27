@@ -1,0 +1,44 @@
+@startuml
+
+|Farmer|
+|Big Brother|
+|System|
+
+|Farmer|
+start
+note left
+    A session is active and
+    the system already has
+    configured sites, batches,
+    users, farmlands, and crop
+    types.
+endnote
+
+|Farmer|
+:Visit Farming Insights page
+in farming dashboard;
+
+if (Has approved reports?) then (Yes)
+    |System|
+    :Generate farming insights
+    from approved reports;
+
+    |Farmer|
+    :Read personal farming insights;
+else (No)
+endif
+
+|Big Brother|
+:Visit Farming Insights page
+in management dashboard;
+
+|System|
+:Generate farming insights
+from approved reports;
+
+|Big Brother|
+:Read farming insights;
+
+stop
+
+@enduml
