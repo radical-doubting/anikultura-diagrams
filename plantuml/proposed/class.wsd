@@ -1,0 +1,266 @@
+@startuml
+
+class Batch {
+    + id: Integer
+    + assigned_farm_school_name: String
+    + number_seeds_distributed: Integer
+    + region_id: Integer
+    + province_id: Integer
+    + municity_id: Integer
+    + barangay: String
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + region(): Region
+    + province(): Province
+    + municity(): Municity
+    + farmers(): User[]
+}
+
+class Crop {
+    + id: Integer
+    + group: String
+    + name: String
+    + variety: String
+    + establishment_days: Integer
+    + vegetative_days: Integer
+    + yield_formation_days: Integer
+    + ripening_days: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class FarmerProfile {
+    + id: Integer
+    + gender: String
+    + civil_status: String
+    + birthday: String
+    + age: Integer
+    + quantity_family_members: Integer
+    + quantity_dependents: Integer
+    + quantity_working_dependents: Integer
+    + highest_educational_status: String
+    + college_course: String
+    + current_job: String
+    + farming_years: Integer
+    + usual_crop_planted: String
+    + affiliated_organization: String
+    + tesda_training_joined: String
+    + nc_passer_status: String
+    + salary_periodicity: String
+    + estimated_salary: Double
+    + social_status: String
+    + social_status_reason: String
+    + farmer_address_id: Integer
+    + user_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + farmer_address(): FarmerAddress
+}
+
+class BigBrotherProfile {
+    + id: Integer
+    + age: Integer
+    + organization_name: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class AdminProfile {
+    + id: Integer
+    + age: Integer
+    + office: String
+    + position: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class FarmerAddress {
+    + id: Integer
+    + house_number: String
+    + street: String
+    + barangay: String
+    + municity: String
+    + province: String
+    + region_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + region(): Region
+    + farmer_profile(): FarmerProfile
+}
+
+class FarmerReport {
+    + id: Integer
+    + volume: Double
+    + farmer_id: Integer
+    + seed_stage_id: Integer
+    + farmland_id: Integer
+    + crop_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + farmer(): User
+    + seed_stage(): SeedStage
+    + farmland(): Farmland
+    + crop(): Crop
+}
+
+class SeedStage {
+    + id: Integer
+    + name: String
+    + image: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+abstract User {
+    + id: Integer
+    + last_name: String
+    + middle_name: String
+    + first_name: String
+    + suffix: String
+    + email: String
+    + username: String
+    + password: String
+    + contact_number: Integer
+    + profile_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    {abstract} + profile(): Model
+    + getFullName(): String
+}
+
+class Municity {
+    + id: Integer
+    + name: String
+    + province_id: Integer
+    + region_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + province(): Province
+    + region(): Region
+}
+
+class Province {
+    + id: Integer
+    + name: String
+    + region_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + region(): Region
+}
+
+class Region {
+    + id: Integer
+    + name: String
+    + region_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class Farmland {
+    + id: Integer
+    + hectares_size: Integer
+    + type_id: Integer
+    + status_id: Integer
+    + batch_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
+
+    + type(): FarmlandType
+    + status(): FarmlandStatus
+    + batch(): Batch
+    + watering_systems(): WateringSystem[]
+    + crop_buyers(): CropBuyer[]
+    + farmers(): User[]
+}
+
+class CropBuyer {
+    + id: Integer
+    + name: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class FarmlandStatus {
+    + id: Integer
+    + name: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class FarmlandType {
+    + id: Integer
+    + name: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class WateringSystem {
+    + id: Integer
+    + name: String
+    + created_at: DateTime
+    + updated_at: DateTime
+}
+
+class FarmSchool {
+    + id: Integer
+    + region_id: Integer
+    + province_id: Integer
+    + municity_id: Integer
+    + big_brother_id: Integer
+
+    + region(): Region
+    + province(): Province
+    + municity(): Municity
+    + big_brother(): User
+}
+
+class Farmer {
+    + profile(): FarmerProfile
+}
+
+class Admin {
+    + profile(): AdminProfile
+}
+
+class BigBrother {
+    + profile(): BigBrotherProfile
+}
+
+User <|-- Farmer
+User <|-up- Admin
+User <|-up- BigBrother
+
+
+Farmland "1" o-- "many" CropBuyer : contains
+Farmland "1" o-- "many" WateringSystem : contains
+Farmland "1" o-up- "many" Farmer : contains
+Farmland -left-o FarmlandType
+Farmland -o FarmlandStatus
+
+FarmerProfile -up-o FarmerAddress
+Farmer -up-* FarmerProfile
+BigBrother -* BigBrotherProfile
+Admin -* AdminProfile
+
+FarmerReport -up-o Farmer
+FarmerReport --o SeedStage
+FarmerReport -o Crop
+
+Municity -o Province
+Municity -o Region
+
+Province -o Region
+
+Batch --o Farmer
+Batch --o Region
+Batch -o Province
+Batch -o Municity
+
+@enduml
