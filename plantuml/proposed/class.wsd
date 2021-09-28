@@ -1,5 +1,5 @@
 @startuml
-
+skinparam classAttributeIconSize 0
 class Batch {
     + id: Integer
     + assigned_farm_school_name: String
@@ -52,7 +52,6 @@ class FarmerProfile {
     + social_status: String
     + social_status_reason: String
     + farmer_address_id: Integer
-    + user_id: Integer
     + created_at: DateTime
     + updated_at: DateTime
 
@@ -84,6 +83,7 @@ class FarmerAddress {
     + municity: String
     + province: String
     + region_id: Integer
+    + farmer_profile_id: FarmerProfile
     + created_at: DateTime
     + updated_at: DateTime
 
@@ -125,6 +125,7 @@ abstract User {
     + username: String
     + password: String
     + contact_number: Integer
+    + profile_type: String
     + profile_id: Integer
     + created_at: DateTime
     + updated_at: DateTime
@@ -175,6 +176,7 @@ class Farmland {
     + type(): FarmlandType
     + status(): FarmlandStatus
     + batch(): Batch
+    + crops(): Crop[]
     + watering_systems(): WateringSystem[]
     + crop_buyers(): CropBuyer[]
     + farmers(): User[]
@@ -214,6 +216,8 @@ class FarmSchool {
     + province_id: Integer
     + municity_id: Integer
     + big_brother_id: Integer
+    + created_at: DateTime
+    + updated_at: DateTime
 
     + region(): Region
     + province(): Province
@@ -238,29 +242,36 @@ User <|-up- Admin
 User <|-up- BigBrother
 
 
-Farmland "1" o-- "many" CropBuyer : contains
+Farmland "1" o- "many" CropBuyer : contains
 Farmland "1" o-- "many" WateringSystem : contains
 Farmland "1" o-up- "many" Farmer : contains
-Farmland -left-o FarmlandType
-Farmland -o FarmlandStatus
 
-FarmerProfile -up-o FarmerAddress
+Farmland --o FarmlandType
+Farmland --o FarmlandStatus
+Farmland --o Crop
+
+FarmerProfile --o FarmerAddress
 Farmer -up-* FarmerProfile
 BigBrother -* BigBrotherProfile
 Admin -* AdminProfile
 
 FarmerReport -up-o Farmer
 FarmerReport --o SeedStage
-FarmerReport -o Crop
+FarmerReport --o Crop
 
 Municity -o Province
 Municity -o Region
 
 Province -o Region
 
-Batch --o Farmer
-Batch --o Region
-Batch -o Province
-Batch -o Municity
+Batch -o Farmer
+Batch -up-o Region
+Batch -up-o Province
+Batch -up-o Municity
+
+FarmSchool --o Region
+FarmSchool --o Province
+FarmSchool --o Municity
+FarmSchool -o BigBrother
 
 @enduml
