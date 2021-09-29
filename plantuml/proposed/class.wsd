@@ -242,36 +242,35 @@ User <|-up- Admin
 User <|-up- BigBrother
 
 
-Farmland "1" o- "many" CropBuyer : contains
-Farmland "1" o-- "many" WateringSystem : contains
-Farmland "1" o-up- "many" Farmer : contains
+Farmland "1" --o "1" FarmlandStatus
+Farmland "1" --o "1..*" CropBuyer
+Farmland "1" --o "1..*" WateringSystem
+Farmland "1" -up-o "1..*" Farmer
 
-Farmland --o FarmlandType
-Farmland --o FarmlandStatus
-Farmland --o Crop
+Farmland "1" -o "1" FarmlandType
+Farmland "1" --o "1..*" Crop
 
-FarmerProfile --o FarmerAddress
-Farmer -up-* FarmerProfile
-BigBrother -* BigBrotherProfile
-Admin -* AdminProfile
+FarmerProfile "1" --* "1..*" FarmerAddress
+Farmer "1" -up-* "1" FarmerProfile
+BigBrother "1" -* "1" BigBrotherProfile
+Admin "1" -* "1" AdminProfile
 
-FarmerReport -up-o Farmer
-FarmerReport --o SeedStage
-FarmerReport --o Crop
+FarmerReport "1" -up-o "1" Farmer
+FarmerReport "1" --o "1" SeedStage
+FarmerReport "1" --o "1" Crop
 
-Municity -o Province
-Municity -o Region
+Municity "1" -o "1" Province
+Municity "1" -o "1" Region
+Province "1" -o "1" Region
 
-Province -o Region
+Batch "1" -o "1..*" Farmer
+Batch "1" -up-o "1" Region
+Batch "1" -up-o "1" Province
+Batch "1" -up-o "1" Municity
 
-Batch -o Farmer
-Batch -up-o Region
-Batch -up-o Province
-Batch -up-o Municity
-
-FarmSchool --o Region
-FarmSchool --o Province
-FarmSchool --o Municity
-FarmSchool -o BigBrother
+FarmSchool "1" --o "1" Region
+FarmSchool "1" --o "1" Province
+FarmSchool "1" --o "1" Municity
+FarmSchool "1" -o "1" BigBrother
 
 @enduml
