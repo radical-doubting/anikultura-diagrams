@@ -1,0 +1,86 @@
+@startuml
+
+actor Admin as admin
+participant View as view
+participant Controller as controller
+participant Model as model
+
+activate view
+
+admin -> view: Visit Site Management Page
+
+view -> controller: Handle request
+activate controller
+
+controller -> model: Query a list of created sites
+activate model
+model --> controller: Return a list of created sites
+deactivate model
+controller --> view: Return response
+deactivate controller
+
+view --> admin: Show Sites page
+
+alt has existing site
+
+admin -> view: Click on existing site
+view -> controller: Handle request
+activate controller
+
+controller -> model: Query site details
+activate model
+model --> controller: Return site details
+deactivate model
+controller --> view: Return response
+deactivate controller
+view --> admin: Show Site Information
+
+alt user still in use
+    admin -> view: Edit site information
+    view -> view: Validate changes
+    view -> controller: Handle request
+    activate controller
+    controller -> model: Update site details
+    activate model
+    model --> controller : Return updated site details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> admin : Show success message
+    activate admin
+    view --> admin : Show updated site details
+     deactivate admin
+    else user not in use
+        admin -> view : Click delete site button
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Delete site
+        activate model
+        model --> controller : Return deletion status
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> admin : Show success message
+        activate admin
+        view --> admin : Redirect to Site Management page
+        deactivate admin
+    end
+else no existing users
+    admin -> view : Click on create button
+    view -> view : Validate changes
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Create site
+    activate model
+    model --> controller : Return created site details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+
+    view --> admin : Show success message
+    activate admin
+    view --> admin : Show created site details
+    deactivate admin
+end
+@enduml

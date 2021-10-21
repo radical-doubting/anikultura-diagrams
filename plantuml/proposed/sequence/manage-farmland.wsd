@@ -1,0 +1,85 @@
+@startuml
+
+actor Admin as admin
+actor BigBrother as bigbrother
+participant View as view
+participant Controller as controller
+participant Model as model
+
+activate view
+
+admin -> view : Click farmland page link
+
+view -> controller : Handle request
+activate controller
+
+controller -> model : Query a list of created farmlands
+activate model
+model --> controller : Return a list of created farmlands
+deactivate model
+controller --> view : Return response
+deactivate controller
+
+view --> admin : Show farmland page
+
+alt has existing farmland
+
+    bigbrother -> view : Click on existing crop stype
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Query farmland
+    activate model
+    model --> controller : Return user details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> bigbrother : Show Edit farmland page
+    alt farmland still in use
+        bigbrother -> view : Edit farmland details and submit
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Update farmland details
+        activate model
+        model --> controller : Return updated farmland details
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> bigbrother : Show success message
+        activate bigbrother
+        view --> bigbrother : Show updated farmland details
+        deactivate bigbrother
+    else farmland not in use
+        bigbrother -> view : Click delete farmland button
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Delete user
+        activate model
+        model --> controller : Return deletion status
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> bigbrother : Show success message
+        activate bigbrother
+        view --> bigbrother : Redirect to farmland page
+        deactivate bigbrother
+    end
+end
+alt assign farmer on farmland
+    bigbrother -> view : Assign farmer details and submit
+    view -> view : Validate assignment
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Update farmer details
+    activate model
+    model --> controller : Return updated farmer details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> bigbrother : Show success message
+    activate bigbrother
+    view --> bigbrother : Show updated farmer details
+    deactivate bigbrother
+end
+@enduml

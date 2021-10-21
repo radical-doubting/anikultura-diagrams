@@ -1,0 +1,53 @@
+@startuml
+
+actor "Big Brother" as bigbro
+actor Farmer as farmer
+boundary View as view
+control Controller as controller
+entity Model as model
+
+farmer -> view : Click View Farming Insights page link in farming dashboard
+activate view
+view -> controller : Handle request
+activate controller
+controller -> model : Query farming insights
+activate model
+model --> controller: Return list of farming Insights
+deactivate model
+controller --> view: Update View
+deactivate controller
+view --> farmer: Show Farming Insights page
+
+alt has approved reports
+        farmer -> view : View personal farming insights
+        view -> view : Validate approved reports
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Generate farming insights
+        activate model
+        model --> controller : Return farming insights
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> farmer : Show personal farming insight
+        deactivate farmer
+    end
+
+    bigbro -> view : Click View Farming Insights page link in management dashboard
+    view -> view : Validate approved reports
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Generate farming insights
+    activate model
+    model --> controller : Return farming insights
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    activate bigbro
+    view --> bigbro : Show farming insights
+    deactivate bigbro
+
+
+
+
+@enduml

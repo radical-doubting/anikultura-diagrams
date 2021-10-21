@@ -1,0 +1,85 @@
+@startuml
+
+actor Admin as admin
+actor BigBrother as bigbrother
+participant View as view
+participant Controller as controller
+participant Model as model
+
+activate view
+
+admin -> view : Click Crop Type page link
+
+view -> controller : Handle request
+activate controller
+
+controller -> model : Query a list of created crop types
+activate model
+model --> controller : Return a list of created crop types
+deactivate model
+controller --> view : Return response
+deactivate controller
+
+view --> admin : Show Crop Type page
+
+alt has existing crop type
+
+    bigbrother -> view : Click on existing crop stype
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Query crop type
+    activate model
+    model --> controller : Return user details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> bigbrother : Show Edit Crop type page
+    alt crop type still in use
+        bigbrother -> view : Edit Crop type details and submit
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Update Crop type details
+        activate model
+        model --> controller : Return updated Crop type details
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> bigbrother : Show success message
+        activate bigbrother
+        view --> bigbrother : Show updated Crop type details
+        deactivate bigbrother
+    else crop type not in use
+        bigbrother -> view : Click delete Crop type button
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Delete user
+        activate model
+        model --> controller : Return deletion status
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> bigbrother : Show success message
+        activate bigbrother
+        view --> bigbrother : Redirect to Crop type page
+        deactivate bigbrother
+    end
+end
+alt assign farmer on crop type
+    bigbrother -> view : Assign farmer details and submit
+    view -> view : Validate assignment
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Update farmer details
+    activate model
+    model --> controller : Return updated farmer details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> bigbrother : Show success message
+    activate bigbrother
+    view --> bigbrother : Show updated farmer details
+    deactivate bigbrother
+end
+@enduml

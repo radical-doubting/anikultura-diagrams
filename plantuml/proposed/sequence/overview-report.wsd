@@ -1,0 +1,27 @@
+@startuml
+
+actor farmer as farmer 
+participant View as view
+participant Controller as controller
+participant Model as model
+
+activate view
+
+    farmer -> view : Click Farming Report Page link
+    view -> controller: Authentication of eligibility
+    activate controller
+    alt farmer eligible
+    controller -> model: Request Page Info
+    activate model
+    model --> controller: Return Page Info
+    controller --> view: Display Page Info
+    view -> farmer: Request farming report input
+
+else view ->
+
+
+
+
+
+
+@enduml

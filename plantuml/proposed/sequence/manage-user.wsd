@@ -1,0 +1,86 @@
+@startuml
+
+actor Admin as admin
+participant View as view
+participant Controller as controller
+participant Model as model
+
+activate view
+
+admin -> view : Click User Management page link
+
+view -> controller : Handle request
+activate controller
+
+controller -> model : Query a list of created users
+activate model
+model --> controller : Return a list of created users
+deactivate model
+controller --> view : Return response
+deactivate controller
+
+view --> admin : Show User Management page
+
+alt has existing users
+
+    admin -> view : Click on existing user
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Query user details
+    activate model
+    model --> controller : Return user details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+    view --> admin : Show Edit User page
+
+    alt user still in use
+        admin -> view : Edit user details and submit
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Update user details
+        activate model
+        model --> controller : Return updated user details
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> admin : Show success message
+        activate admin
+        view --> admin : Show updated user details
+        deactivate admin
+    else user not in use
+        admin -> view : Click delete user button
+        view -> view : Validate changes
+        view -> controller : Handle request
+        activate controller
+        controller -> model : Delete user
+        activate model
+        model --> controller : Return deletion status
+        deactivate model
+        controller --> view : Return response
+        deactivate controller
+        view --> admin : Show success message
+        activate admin
+        view --> admin : Redirect to User Management page
+        deactivate admin
+    end
+else no existing users
+    admin -> view : Click on create button
+    view -> view : Validate changes
+    view -> controller : Handle request
+    activate controller
+    controller -> model : Create user
+    activate model
+    model --> controller : Return created user details
+    deactivate model
+    controller --> view : Return response
+    deactivate controller
+
+    view --> admin : Show success message
+    activate admin
+    view --> admin : Show created user details
+    deactivate admin
+end
+
+@enduml

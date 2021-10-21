@@ -1,0 +1,77 @@
+@startuml
+
+
+actor Admin as admin
+actor "Big Brother" as bigbro
+actor Farmer as farmer
+boundary View as view
+control Controller as controller
+entity Model as model
+
+
+activate view
+admin -> view : Login to management dashboard
+
+view -> controller : Handle Event
+activate controller
+
+activate model
+controller -> model : Manage site
+controller -> model : Manage batch
+controller -> model : Manage user
+
+
+model --> controller: Return Update Details
+deactivate model
+
+controller --> view: Update View
+deactivate controller
+view --> admin: Read Managed Details
+deactivate view
+
+'BIG BROTHER ACTIONS'
+admin -> bigbro: Inform Account Credentials
+
+activate view
+bigbro -> view: Login to management deashboard
+
+
+view -> controller : Handle Event
+activate controller
+
+activate model
+controller -> model : Manage farmland
+controller -> model : Manage croptype
+
+model --> controller: Return Update Details
+deactivate model
+
+controller --> view: Update View
+deactivate controller
+view --> bigbro: Read Managed Details
+deactivate view
+
+'FARMER ACTIONS'
+bigbro -> farmer: Inform Account Credentials
+
+activate view
+farmer -> view: Login to farmer dashboard
+
+
+view -> controller : Handle Event
+activate controller
+
+activate model
+controller -> model : Start farmer session
+
+model --> controller: Return session
+deactivate model
+
+controller --> view: Update View
+deactivate controller
+view --> farmer: Access farmer dashboard
+deactivate view
+
+
+
+@enduml
