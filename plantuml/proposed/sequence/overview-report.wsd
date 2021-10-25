@@ -1,23 +1,53 @@
 @startuml
 
+actor "Big Brother" as bigbro
 actor farmer as farmer 
-participant View as view
-participant Controller as controller
-participant Model as model
+boundary View as view
+control Controller as controller
+entity Model as model
 
+
+
+farmer -> view : Click Farming Report Page link
 activate view
+view -> controller: Authentication of eligibility
+activate controller
 
-    farmer -> view : Click Farming Report Page link
-    view -> controller: Authentication of eligibility
-    activate controller
-    alt farmer eligible
+alt farmer eligible
+
     controller -> model: Request Page Info
+    deactivate controller
     activate model
     model --> controller: Return Page Info
+    deactivate model
+    activate controller
     controller --> view: Display Page Info
-    view -> farmer: Request farming report input
+    deactivate controller
 
-else view ->
+    view -> farmer: Request farming report input
+    
+else farmer is uneligible
+    controller --> view: Farmer is ineligible
+    view -> farmer: Display error message
+end
+
+farmer --> view: Provide farming report inputs
+view -> controller: Process farming report inputs
+controller --> view: Display farming report inputs
+view -> farmer: Confirm and send farming report?
+
+alt farmer sent the report
+
+    farmer --> view: Farmer confirms and sends the report
+    view -> controller: handle sent farmer report
+    controller -> model: update farming report database
+    mode --> controller: confirm changes
+else
+
+
+end
+
+
 
 
 

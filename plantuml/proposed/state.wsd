@@ -1,0 +1,30 @@
+@startuml
+
+[*] --> Authenticated : Farmer logged in
+
+EligibleToSeeInsights --> Authenticated : Read farming insights
+
+state Authenticated {
+    [*] --> Idle
+    Idle --> EligibleToReport : Passed reporting pre-requisites
+    Idle -> EligibleToSeeInsights : Submitted farming reports
+}
+
+state EligibleToReport {
+    [*] --> ReportInputted : Inputted farming report
+    ReportInputted --> ReportSubmitted : Submitted farming report
+    ReportSubmitted --> ReportVerified : Verified farming report
+    ReportVerified --> ReportSaved : Saved farming report
+    ReportVerified --> ReportInputted : Failed verifying farming report
+    ReportSaved --> EligibleToSeeInsights : Generated farming insights
+}
+
+' state EligibleToSeeInsights {
+'     [*] --> InsightRead : Read farming insights
+' }
+
+' EligibleToReport --> Idle : Hello
+
+Idle -left-> [*] : Logout
+
+@enduml
