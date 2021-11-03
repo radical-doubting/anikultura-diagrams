@@ -1,0 +1,32 @@
+@startuml
+
+package Client {
+    node "Web Browser" as browser <<device>>
+}
+
+package Server {
+    node "Web Server" <<device>> as web{
+        component "Farmer Dashboard" <<component>> as farmer
+
+        ' farmer -- html
+        ' farmer -- js
+        ' farmer -- css
+    }
+
+    node "Application Server" <<device>> as app {
+        component "Admin Dashboard" <<component>> as admin
+        component "REST API" <<component>> as rest
+    }
+
+    node "Database Server" <<device>> as db {
+        component "Anikultura Database" <<database>>
+    }
+}
+
+browser - web : HTTP <<protocol>>
+browser - app : HTTP <<protocol>>
+
+web -- app : HTTP <<protocol>>
+app -- db : TCP <<protocol>>
+
+@enduml
