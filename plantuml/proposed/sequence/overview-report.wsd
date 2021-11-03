@@ -1,7 +1,7 @@
 @startuml
 
 actor "Big Brother" as bigbro
-actor farmer as farmer 
+actor "Farmer" as farmer
 boundary View as view
 control Controller as controller
 entity Model as model
@@ -26,7 +26,7 @@ alt farmer eligible
 
     view -> farmer: Request farming report input
     activate controller
-    
+
 else farmer is ineligible
     controller --> view: Farmer is ineligible
     deactivate controller
@@ -87,17 +87,5 @@ activate controller
 controller --> view: display updated farming report page
 deactivate controller
 view -> farmer: Notify farmer who reported
-
-
-    
-
-
-
-
-
-
-
-
-
 
 @enduml

@@ -1,7 +1,7 @@
 @startuml
 
 actor Admin as admin
-actor BigBrother as bigbrother
+actor "Big Brother" as bigbrother
 participant View as view
 participant Controller as controller
 participant Model as model
