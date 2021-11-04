@@ -1,10 +1,10 @@
 @startuml
 
 actor Admin as admin
-actor BigBrother as bigbrother
-participant View as view
-participant Controller as controller
-participant Model as model
+actor "Big Brother" as bigbrother
+boundary View as view
+control Controller as controller
+entity Model as model
 
 activate view
 

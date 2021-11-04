@@ -2,9 +2,9 @@
 
 actor Admin as admin
 actor "Big Brother" as bigbrother
-participant View as view
-participant Controller as controller
-participant Model as model
+boundary View as view
+control Controller as controller
+entity Model as model
 
 activate view
 
