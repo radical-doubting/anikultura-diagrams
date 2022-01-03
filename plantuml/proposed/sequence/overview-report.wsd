@@ -24,25 +24,25 @@ alt farmer eligible
     controller --> view: Display Page Info
     deactivate controller
 
-    view -> farmer: Request farming report input
+    view --> farmer: Request farming report input
     activate controller
 
 else farmer is ineligible
     controller --> view: Farmer is ineligible
     deactivate controller
-    view -> farmer: Display error message
+    view --> farmer: Display error message
 end
 
-farmer --> view: Provide farming report inputs
+farmer -> view: Provide farming report inputs
 view -> controller: Process farming report inputs
 activate controller
 controller --> view: Display farming report inputs
 deactivate controller
-view -> farmer: Confirm and send farming report?
+view --> farmer: Confirm and send farming report?
 
 alt farmer sent the report
 
-    farmer --> view: Farmer confirms and sends the report
+    farmer -> view: Farmer confirms and sends the report
     view -> controller: handle sent farmer report
     activate controller
     controller -> model: update farming report database
@@ -53,14 +53,14 @@ alt farmer sent the report
     activate controller
     controller --> view: update page details
     deactivate controller
-    view -> farmer: Display updated farming report page
+    view --> farmer: Display updated farming report page
 else farmer cancels
-    farmer --> view: Farmer cancels sending the report
+    farmer -> view: Farmer cancels sending the report
     view -> controller: Request previous farming report page data
     activate controller
     controller --> view: Return previous farming report page data
     deactivate controller
-    view -> farmer: Display farming report page
+    view --> farmer: Display farming report page
 end
 
 bigbro -> view: Click farming report page link
@@ -74,8 +74,8 @@ deactivate model
 activate controller
 controller --> view: Display farming report page information
 deactivate controller
-view -> bigbro: Is the farming report valid?
-bigbro --> view: rejects or approves farming report
+view --> bigbro: Is the farming report valid?
+bigbro -> view: rejects or approves farming report
 view -> controller: handle farming report verification
 activate controller
 controller -> model: update farming stage of farmer
@@ -86,6 +86,6 @@ deactivate model
 activate controller
 controller --> view: display updated farming report page
 deactivate controller
-view -> farmer: Notify farmer who reported
+view --> farmer: Notify farmer who reported
 
 @enduml
