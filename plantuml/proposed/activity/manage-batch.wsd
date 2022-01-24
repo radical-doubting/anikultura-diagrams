@@ -12,24 +12,15 @@ note left: Manage batch
 
 if (Is there an existing batch?) then (yes)
     :Read batch information;
-    if (Is it still in batch?) then (yes)
+    if (Is it still in use?) then (yes)
         :Edit batch information;
     else (no)
         :Delete batch;
     endif
 else (no)
-    :Create site;
-
-     if (Is user a big brother?) then (Yes)
-        :Create batch;
-        :Assign batch in a site;
-    else (No)
-        if (Is user an admin?) then (Yes)
-            :Create farmland;
-            :Assign batch in a site;
-        else (No)
-        endif
-    endif
+    :Create batch;
+    :Assign batch in a site;
+    :Assign seed allocations;
 endif
 
 |System|
@@ -44,7 +35,7 @@ else (no)
 endif
 
 |Big Brother|
-:Read site information;
+:Read batch information;
 
 stop
 

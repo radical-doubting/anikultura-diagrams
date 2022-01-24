@@ -19,19 +19,8 @@ if (Is there an existing farmland?) then (Yes)
     endif
 else (No)
     :Create farmland;
-
-    if (Is user a big brother?) then (Yes)
-        :Create farmland;
-        :Assign farmland in a batch;
-        :Assign farmer in farmland;
-    else (No)
-        if (Is user an admin?) then (Yes)
-            :Create farmland;
-            :Assign farmland in a batch;
-            :Assign farmer in farmland;
-        else (No)
-        endif
-    endif
+    :Assign farmland in a batch;
+    :Assign farmer in farmland;
 endif
 
 |System|
