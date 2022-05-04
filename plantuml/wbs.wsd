@@ -1,0 +1,50 @@
+@startwbs
+
+<style>
+node {
+    MaximumWidth 120
+    HorizontalAlignment center
+}
+</style>
+
+* Anikultura System\n1
+
+** Initiation\n1.1
+*** Evaluation & Recommendations\n1.1.1
+*** Develop Project Charter\n1.1.2
+*** Deliverable: Submit Project Charter\n1.1.3
+*** Project Sponsor Reviews Project Charter\n1.1.4
+*** Project Charter Signed & Approved\n1.1.5
+** Planning\n1.2
+
+*** Create Preliminary Scope Statement\n1.2.1
+*** Determine Project Team\n1.2.2
+*** Project Team Kickoff Meeting\n1.2.3
+*** Develop Project Plan\n1.2.4
+*** Submit Project Plan\n1.2.5
+*** Milestone: Project Plan Approved\n1.2.6
+
+** Execution\n1.3
+*** Project Kickoff Meeting\n1.3.1
+*** Demonstrate Last Increment\n1.3.2
+*** Verify User Requirements\n1.3.3
+*** Development Phase\n1.3.4
+*** Testing Phase\n1.3.5
+*** Deploy Staging Environment\n1.3.6
+*** User Training\n1.3.7
+*** Deploy Production Environment\n1.3.8
+
+** Control\n1.4
+*** Project Management\n1.4.1
+*** Project Status Meetings\n1.4.2
+*** Risk Management\n1.4.3
+*** Update Project Management Plan\n1.4.4
+
+** Closeout\n1.5
+*** Audit Procurement\n1.5.1
+*** Document Lessons Learned\n1.5.2
+*** Update Files & Records\n1.5.3
+*** Gain Formal Acceptance\n1.5.4
+*** Archive Files & Documents\n1.5.5
+
+@endwbs
