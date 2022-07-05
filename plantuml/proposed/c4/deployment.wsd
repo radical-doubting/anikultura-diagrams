@@ -1,0 +1,31 @@
+@startuml C4 Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(farmer, "Farmer")
+Person(admin, "Administrator")
+Person(big_brother, "Big Brother")
+
+System_Boundary(c1, "Anikultura") {
+    Container(farmer_dashboard, "Farmer Dashboard", "TypeScript, Ionic PWA", "Allows farmers to submit farming reports and gain farming insight")
+    Container(management_dashboard, "Management Dashboard", "PHP, Laravel Server", "Allows admins and big brothers to manage the platform. Exposes a REST API")
+    Container(analytics_dashboard, "Analytics Dashboard", "Grafana", "Allows admins to view insights in the platform")
+    ContainerDb(influxdb, "Analytics Database", "InfluxDB", "Holds analytics time-series data")
+    ContainerDb(postgres, "Relational Database", "PostgreSQL", "Holds persistent data")
+    ContainerDb(redis, "Cache", "Redis", "Holds cached data for faster data retrieval")
+}
+
+
+Rel_L(farmer_dashboard, management_dashboard, "Uses", "HTTPS")
+
+Rel(management_dashboard, influxdb, "Writes", "data")
+Rel(management_dashboard, postgres, "Reads/Writes", "data")
+Rel(management_dashboard, redis, "Reads/Writes", "data")
+Rel(analytics_dashboard, influxdb, "Reads", "data")
+
+
+Rel_R(farmer, farmer_dashboard, "Uses", "HTTPS")
+Rel_U(admin, analytics_dashboard, "Uses", "HTTPS")
+Rel(admin, management_dashboard, "Uses", "HTTPS")
+Rel(big_brother, management_dashboard, "Uses", "HTTPS")
+
+@enduml
