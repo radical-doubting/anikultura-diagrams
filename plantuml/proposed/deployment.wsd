@@ -1,4 +1,5 @@
 @startuml
+skin rose
 
 package Client {
     node "Web Browser" as browser <<device>>
@@ -21,12 +22,29 @@ package Server {
     node "Database Server" <<device>> as db {
         component "Anikultura Database" <<database>>
     }
+
+    node "Cache Server" <<device>> as cache {
+        component "Anikultura Cache" <<cache>>
+    }
+
+    node "Prometheus Server" <<device>> as prom {
+        component "Metrics Database" <<database>>
+    }
+
+    node "Grafana Server" <<device>> as grafana {
+        component "Analytics Dashboard" <<component>>
+    }
 }
+
+web -- app : HTTP <<protocol>>
+app -- db : TCP <<protocol>>
+app -- cache : TCP <<protocol>>
+app -- prom : HTTP <<protocol>>
+prom -- grafana : HTTP <<protocol>>
+
 
 browser - web : HTTP <<protocol>>
 browser - app : HTTP <<protocol>>
 
-web -- app : HTTP <<protocol>>
-app -- db : TCP <<protocol>>
 
 @enduml
