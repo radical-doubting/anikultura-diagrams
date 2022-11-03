@@ -1,0 +1,48 @@
+@startuml
+skin rose
+
+package AnikulturaManagementDashboard {
+    package Dashboard {
+        package UserInterface {
+
+        }
+
+        package Orchid {
+
+        }
+
+        UserInterface ..> Orchid : use
+    }
+
+    package API {
+        package Controller {
+
+        }
+    }
+
+    package Laravel {
+
+    }
+
+    Dashboard ..> Laravel : use
+    API ..> Laravel : use
+}
+
+package AnikulturaFarmerDashboard {
+    package "UserInterface" as fui {
+
+    }
+
+    package Ionic {
+
+    }
+
+    package Angular {
+
+    }
+
+    fui ..> Ionic : use
+    fui ..> Angular : use
+}
+
+@enduml

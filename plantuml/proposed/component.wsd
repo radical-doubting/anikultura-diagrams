@@ -1,0 +1,38 @@
+@startuml
+skin rose
+
+package AnikulturaManagementDashboard {
+    package Dashboard {
+        package UserInterface {
+            [Batch Management Screen]
+            [Crop Management Screen]
+            [Farmer Report Management Screen]
+            [Farmland Management Screen]
+            [Home Screen]
+            [Site Management Screen]
+            [User Management Screen]
+        }
+    }
+
+    package API {
+        package Controller {
+            [Authentication API]
+            [Crop API]
+            [Farmland API]
+            [Farmer API]
+            [Farmer Report API]
+        }
+    }
+}
+
+package AnikulturaFarmerDashboard {
+    package "UserInterface" as fui {
+        [Home Screen] as hs
+        [Login Screen]
+        [Profile Screen]
+        [Tabs Screen]
+        [Tutorial Screen]
+    }
+}
+
+@enduml
